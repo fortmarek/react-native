@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
+#ifdef RN_FABRIC_ENABLED
 #import "RNTMyNativeViewComponentView.h"
 
 #import <react/renderer/components/MyNativeViewSpec/ComponentDescriptors.h>
@@ -86,3 +86,4 @@ Class<RCTComponentViewProtocol> RNTMyNativeViewCls(void)
 {
   return RNTMyNativeViewComponentView.class;
 }
+#endif /* RN_FABRIC_ENABLED */

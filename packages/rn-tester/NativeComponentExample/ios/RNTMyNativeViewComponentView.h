@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#ifdef RN_FABRIC_ENABLED
 #import <React/RCTViewComponentView.h>
 #import <UIKit/UIKit.h>
 
@@ -17,3 +18,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+#endif /* RN_FABRIC_ENABLED */
