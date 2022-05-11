@@ -11,7 +11,9 @@
 'use strict';
 
 import * as React from 'react';
-import MyNativeView from '../../../NativeComponentExample/js/MyNativeView';
+import {Pressable, Text, View} from 'react-native';
+import RNTMyNativeView from '../../../NativeComponentExample/js/MyNativeView';
+import MyWrapperView from '../../../NativeComponentExample/js/MyWrapperViewNativeComponent';
 
 exports.title = 'New Architecture Examples';
 exports.description =
@@ -23,7 +25,18 @@ exports.examples = [
     render(): React.Element<any> {
       return (
         <>
-          <MyNativeView />
+          <View style={{flex: 1}}>
+            {/* On Android, this view has a red background as it it was not migrated to Fabric (which it should be) */}
+            {/* On iOS, if you press the Pressable, nothing happens (whereas without MyWrapperView, it works as expcted) */}
+            <MyWrapperView>
+              <Pressable
+                onPress={() => {
+                  console.log('Pressed!');
+                }}>
+                <Text style={{color: 'black'}}>Press me!</Text>
+              </Pressable>
+            </MyWrapperView>
+          </View>
         </>
       );
     },
