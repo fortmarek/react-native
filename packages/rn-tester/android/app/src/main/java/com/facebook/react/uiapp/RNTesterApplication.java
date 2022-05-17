@@ -35,6 +35,7 @@ import com.facebook.react.module.model.ReactModuleInfo;
 import com.facebook.react.module.model.ReactModuleInfoProvider;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.react.uiapp.component.MyNativeViewManager;
+import com.facebook.react.uiapp.component.MyWrapperViewManager;
 import com.facebook.react.uimanager.ViewManager;
 import com.facebook.react.uimanager.ViewManagerRegistry;
 import com.facebook.react.views.text.ReactFontManager;
@@ -121,7 +122,7 @@ public class RNTesterApplication extends Application implements ReactApplication
                 @Override
                 public List<ViewManager> createViewManagers(
                     @NonNull ReactApplicationContext reactContext) {
-                  return Collections.singletonList(new MyNativeViewManager());
+                  return List.of(new MyNativeViewManager(), new MyWrapperViewManager());
                 }
               });
         }

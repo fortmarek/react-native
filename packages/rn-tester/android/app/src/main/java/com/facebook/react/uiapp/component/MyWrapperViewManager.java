@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.module.annotations.ReactModule;
-import com.facebook.react.uimanager.SimpleViewManager;
+import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewManagerDelegate;
 import com.facebook.react.uimanager.ViewProps;
@@ -22,7 +22,7 @@ import com.facebook.react.viewmanagers.MyWrapperViewManagerInterface;
 
 /** View manager for {@link MyWrapperView} components. */
 @ReactModule(name = MyWrapperViewManager.REACT_CLASS)
-public class MyWrapperViewManager extends SimpleViewManager<MyWrapperView>
+public class MyWrapperViewManager extends ViewGroupManager<MyWrapperView>
     implements MyWrapperViewManagerInterface<MyWrapperView> {
 
   public static final String REACT_CLASS = "MyWrapperView";
@@ -53,7 +53,7 @@ public class MyWrapperViewManager extends SimpleViewManager<MyWrapperView>
 
   @Override
   public void receiveCommand(
-      @NonNull MyNativeView view, String commandName, @Nullable ReadableArray args) {
+      @NonNull MyWrapperView view, String commandName, @Nullable ReadableArray args) {
     mDelegate.receiveCommand(view, commandName, args);
   }
 }

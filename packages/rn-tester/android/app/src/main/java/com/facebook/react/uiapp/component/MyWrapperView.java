@@ -9,10 +9,19 @@ package com.facebook.react.uiapp.component;
 
 import android.content.Context;
 import android.view.View;
+import com.facebook.react.uimanager.FabricViewStateManager;
+import com.facebook.react.views.view.ReactViewGroup;
 
-class MyWrapperView extends View {
+class MyWrapperView extends ReactViewGroup implements FabricViewStateManager.HasFabricViewStateManager {
+  private final FabricViewStateManager mFabricViewStateManager;
 
   public MyWrapperView(Context context) {
     super(context);
+    mFabricViewStateManager = new FabricViewStateManager();
+  }
+
+  @Override
+  public FabricViewStateManager getFabricViewStateManager() {
+      return mFabricViewStateManager;
   }
 }
