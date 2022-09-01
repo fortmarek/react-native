@@ -23,27 +23,28 @@ describe('RNCodegen.generate', () => {
     jest.resetModules();
   });
   it('when type `all`, with default paths', () => {
-    const componentsOutputDir = 'react/renderer/components/library';
-    const modulesOutputDir = 'library';
-
-    const expectedPaths = {
-      'library.h': modulesOutputDir,
-      'library-generated.mm': modulesOutputDir,
-      'ShadowNodes.h': componentsOutputDir,
-      'ShadowNodes.cpp': componentsOutputDir,
-      'Props.h': componentsOutputDir,
-      'Props.cpp': componentsOutputDir,
-      'RCTComponentViewHelpers.h': componentsOutputDir,
-      'EventEmitters.h': componentsOutputDir,
-      'EventEmitters.cpp': componentsOutputDir,
-      'ComponentDescriptors.h': componentsOutputDir,
-    };
-
     jest.mock('fs', () => ({
       existsSync: location => {
         return true;
       },
       writeFileSync: (location, content) => {
+        const modulesOutputDir = 'library';
+        const componentsOutputDir = 'react/renderer/components/library';
+
+        const expectedPaths = {
+          'library.h': modulesOutputDir,
+          'library-generated.mm': modulesOutputDir,
+          'ShadowNodes.h': componentsOutputDir,
+          'ShadowNodes.cpp': componentsOutputDir,
+          'Props.h': componentsOutputDir,
+          'Props.cpp': componentsOutputDir,
+          'RCTComponentViewHelpers.h': componentsOutputDir,
+          'EventEmitters.h': componentsOutputDir,
+          'EventEmitters.cpp': componentsOutputDir,
+          'ComponentDescriptors.h': componentsOutputDir,
+        };
+        const path = require('path');
+        const outputDirectory = 'tmp/out/';
         let receivedDir = path.dirname(location);
         let receivedBasename = path.basename(location);
 

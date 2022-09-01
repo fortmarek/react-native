@@ -14,9 +14,13 @@
 const TypeScriptParser = require('../../index.js');
 const fixtures = require('../__test_fixtures__/fixtures.js');
 const failureFixtures = require('../__test_fixtures__/failures.js');
-jest.mock('fs', () => ({
-  readFileSync: filename => fixtures[filename] || failureFixtures[filename],
-}));
+jest.mock('fs', () => {
+  const fixtures = require('../__test_fixtures__/fixtures.js');
+  const failureFixtures = require('../__test_fixtures__/failures.js');
+  return {
+    readFileSync: filename => fixtures[filename] || failureFixtures[filename],
+  };
+});
 
 describe('RN Codegen TypeScript Parser', () => {
   Object.keys(fixtures)
